@@ -1,0 +1,6 @@
+{
+    "git.decorations.enabled": false,
+    "explorer.excludeGitIgnore": true,
+    "git.enabled": true,
+    "git.confirmSync": true
+}

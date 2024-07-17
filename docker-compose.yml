@@ -1,0 +1,6 @@
+version: '3.7'
+services:
+  web:
+    image: your_harbor_repo_url/my-nginx-image:latest
+    ports:
+      - "8081:80"
