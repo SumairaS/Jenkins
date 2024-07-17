@@ -1,0 +1,28 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('Build') {
+            steps {
+                script {
+                    // Build Docker image using Docker DSL
+                    docker.build("10.25.10.28/my_first_project/my-docker-app:v1")
+                }
+            }
+        }
+        stage('Push') {
+            steps {
+                script {
+                    // Push Docker image to Harbor using Docker DSL
+                    docker.withRegistry('http://10.25.10.28', 'harbor-login') {
+                        docker.image("10.25.10.28/my_first_project/my-docker-app:v1").push()
+                    }
+                }
+            }
+        }
+    }
+
+    environment {
+        registryCredential = 'harbor-login'
+    }
+}
